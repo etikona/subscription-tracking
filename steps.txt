@@ -1,0 +1,2 @@
+1. Set Up app.js file
+2. Set config / environment file

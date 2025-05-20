@@ -3,3 +3,4 @@
 3. Set up routes
 4. Connect to the Database
 5. Creates models
+6. Create Middlewares

@@ -1,5 +1,10 @@
 import { Router } from "express";
-
+import { authorize } from "../middlewares/auth.middleware.js";
+import {
+  createSubscription,
+  getUserSubscription,
+} from "../controllers/subscription.controller.js";
+const userRouter = Router();
 const subscriptionRouter = Router();
 
 subscriptionRouter.get("/", (req, res) =>
@@ -8,9 +13,9 @@ subscriptionRouter.get("/", (req, res) =>
 subscriptionRouter.get("/:id", (req, res) =>
   res.send({ title: "Get  a single the subscription data" })
 );
-subscriptionRouter.post("/", (req, res) =>
-  res.send({ title: "Post all the subscription data" })
-);
+subscriptionRouter.get("/user/:id", authorize, getUserSubscription);
+
+subscriptionRouter.post("/", authorize, createSubscription);
 subscriptionRouter.post("/:id", (req, res) =>
   res.send({ title: "Post a single the subscription data" })
 );
